@@ -19,7 +19,7 @@ func fast_percentile(array unsafe.Pointer, size int, percent float64) float64 {
 	sort.Float64s(elements)
 	length := float64(len(elements))
 	if length == 0 {
-		return 0.0
+		return 0
 	}
 	rank := (percent / 100) * (length + 1)
 	_, rank_frac := math.Modf(rank)

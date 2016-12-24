@@ -38,6 +38,16 @@ Percentile calculations are based on the NIST formula[http://www.itl.nist.gov/di
 
 * <tt>sudo gem install bkoski-array_stats --source http://gemcutter.org</tt>
 
+== BENCHMARK
+
+A comparison of percentile and fast_percentile methods.
+
+```
+       user     system      total        real
+Ruby:  23.580000   0.480000  24.060000 ( 24.063252)
+Golang:  13.940000   0.440000  14.380000 ( 12.710602)
+```
+
 == LICENSE:
 
 (The MIT License)

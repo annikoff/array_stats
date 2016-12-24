@@ -4,7 +4,9 @@ require 'rubygems'
 require 'rake'
 
 gem = Gem::Specification.load(File.dirname(__FILE__) + '/array_stats.gemspec')
-Rake::ExtensionTask.new('array_stats', gem)
+Rake::ExtensionTask.new('array_stats', gem) do |ext|
+  ext.lib_dir = 'bin'
+end
 
 begin
   require 'jeweler'
