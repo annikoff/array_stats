@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
 class TestArrayStats < Test::Unit::TestCase
-
   context "median" do
     should "return the middle of the set if array length is odd" do
       assert_equal 15, [1,2,15,22,38].median

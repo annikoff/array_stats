@@ -1,5 +1,10 @@
+require 'ffi'
+
 module ArrayStats
-  
+  extend FFI::Library
+  ffi_lib '../ext/array_stats/libfastpercentile.so'
+  attach_function :fast_percentile, [:pointer, :int, :double], :double
+
   # Returns the sum of all elements in the array; 0 if array is empty
   def total_sum
     self.inject(0) {|sum, sample| sum += sample}
@@ -17,6 +22,11 @@ module ArrayStats
   # Returns the median for the array; nil if array is empty
   def median
     percentile(50)
+  end
+
+  # Returns the median for the array; nil if array is empty
+  def fast_median
+    fast_percentile(50)
   end
   
   # Returns the percentile value for percentile _p_; nil if array is empty.
@@ -38,6 +48,12 @@ module ArrayStats
     else
       return sorted_array[rank - 1]
     end    
+  end
+
+  def fast_percentile p
+    pointer = FFI::MemoryPointer.new :double, size
+    pointer.put_array_of_double 0, self
+    ArrayStats.fast_percentile pointer, size, p
   end
   
 end
