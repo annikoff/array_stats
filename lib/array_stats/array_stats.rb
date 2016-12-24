@@ -2,7 +2,7 @@ require 'ffi'
 
 module ArrayStats
   extend FFI::Library
-  ffi_lib File.expand_path('../../../bin/libfastpercentile.so', __FILE__)
+  ffi_lib File.expand_path('../../array_stats.so', __FILE__)
   attach_function :fast_percentile, [:pointer, :int, :double], :double
 
   # Returns the sum of all elements in the array; 0 if array is empty

@@ -1,12 +1,9 @@
 require 'rake'
 require 'rake/extensiontask'
 require 'rubygems'
-require 'rake'
 
-gem = Gem::Specification.load(File.dirname(__FILE__) + '/array_stats.gemspec')
-Rake::ExtensionTask.new('array_stats', gem) do |ext|
-  ext.lib_dir = 'bin'
-end
+spec = Gem::Specification.load('array_stats.gemspec')
+Rake::ExtensionTask.new('array_stats', spec)
 
 begin
   require 'jeweler'
@@ -44,8 +41,6 @@ rescue LoadError
     abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
   end
 end
-
-task :test => :check_dependencies
 
 task :default => [:compile, :test]
 
