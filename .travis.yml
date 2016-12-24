@@ -3,5 +3,7 @@ language: ruby
 rvm:
   - 2.3.3
   - 2.2.2
-before_script: rake compile
+before_script:
+  - go version
+  - rake compile
 script: rake test

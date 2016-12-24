@@ -1,5 +1,7 @@
 = array_stats
 
+{<img src="https://travis-ci.org/annikoff/array_stats.svg?branch=experiment" alt="Build Status" />}[https://travis-ci.org/annikoff/array_stats]
+
 * Docs[http://benkoski.com/array_stats/]
 * Source[http://github.com/bkoski/array_stats]
 
