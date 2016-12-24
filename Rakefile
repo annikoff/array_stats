@@ -3,7 +3,9 @@ require 'rake/extensiontask'
 require 'rubygems'
 
 spec = Gem::Specification.load('array_stats.gemspec')
-Rake::ExtensionTask.new('array_stats', spec)
+Rake::ExtensionTask.new('array_stats', spec) do |ext|
+  ext.lib_dir = 'bin'
+end
 
 begin
   require 'jeweler'
