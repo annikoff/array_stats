@@ -9,15 +9,12 @@ import (
 
 //export fast_percentile
 func fast_percentile(array unsafe.Pointer, size int, percent float64) float64 {
-	elements := []float64{}
-	for i := 0; i < int(size); i++ {
-		element := *(*C.double)(unsafe.Pointer(uintptr(unsafe.Pointer(array)) +
-			uintptr(i)*unsafe.Sizeof(array)))
-		elements = append(elements, float64(element))
-	}
-
+	elements := make([]float64, size)
+	copy(elements[:], (*[1<<30]float64)(array)[:])
 	sort.Float64s(elements)
-	length := float64(len(elements))
+
+	length := float64(size)
+
 	if length == 0 {
 		return 0
 	}

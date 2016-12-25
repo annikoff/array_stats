@@ -50,7 +50,7 @@ module ArrayStats
   end
 
   def fast_percentile p
-    return nil if length == 0
+    return nil if size == 0
     pointer = FFI::MemoryPointer.new :double, size
     pointer.put_array_of_double 0, self
     ArrayStats.fast_percentile pointer, size, p
