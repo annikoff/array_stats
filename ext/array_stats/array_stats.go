@@ -9,16 +9,10 @@ import (
 
 //export fast_percentile
 func fast_percentile(array unsafe.Pointer, size int, percent float64) float64 {
-	elements := make([]float64, size)
-	copy(elements[:], (*[1<<30]float64)(array)[:])
+	elements := (*[1<<30]float64)(array)[:size]
 	sort.Float64s(elements)
 
-	length := float64(size)
-
-	if length == 0 {
-		return 0
-	}
-	rank := (percent / 100) * (length + 1)
+	rank := (percent / 100) * (float64(size) + 1)
 	_, rank_frac := math.Modf(rank)
 	rank_frac = math.Abs(rank_frac)
 	rank_truncated := int(math.Trunc(rank))
