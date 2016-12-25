@@ -9,6 +9,9 @@ import (
 
 //export fast_percentile
 func fast_percentile(array unsafe.Pointer, size int, percent float64) float64 {
+	if size == 0 {
+		return 0
+	}
 	elements := (*[1<<30]float64)(array)[:size]
 	sort.Float64s(elements)
 
