@@ -6,7 +6,7 @@
 Gem::Specification.new do |s|
   s.name = %q{array_stats}
   s.version = "0.6.0"
-
+  s.platform = Gem::Platform::RUBY
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben Koski"]
   s.date = %q{2010-04-05}
@@ -26,7 +26,9 @@ Gem::Specification.new do |s|
      "lib/array_stats/float.rb",
      "test/test_array_stats.rb",
      "test/test_float_extensions.rb",
-     "test/test_helper.rb"
+     "test/test_helper.rb",
+     "ext/array_stats/extconf.rb",
+     "ext/array_stats/array_stats.go"
   ]
   s.homepage = %q{http://github.com/bkoski/array_stats}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -38,6 +40,7 @@ Gem::Specification.new do |s|
      "test/test_float_extensions.rb",
      "test/test_helper.rb"
   ]
+  s.extensions = ['ext/array_stats/extconf.rb']
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
@@ -51,4 +54,5 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
   end
+  s.add_dependency 'ffi'
 end

@@ -1,5 +1,11 @@
-require 'rubygems'
 require 'rake'
+require 'rake/extensiontask'
+require 'rubygems'
+
+spec = Gem::Specification.load('array_stats.gemspec')
+Rake::ExtensionTask.new('array_stats', spec) do |ext|
+  ext.lib_dir = 'bin'
+end
 
 begin
   require 'jeweler'
@@ -38,11 +44,9 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
+task :default => [:compile, :test]
 
-task :default => :test
-
-require 'rake/rdoctask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 

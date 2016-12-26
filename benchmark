@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'benchmark'
+require_relative 'lib/array_stats'
+
+n = 100
+array = (1..1000000).map { rand(10) * 10 }
+Benchmark.bm do |x|
+  x.report('Ruby: ') do
+    n.times { array.percentile(65) }
+  end
+
+  x.report('Golang: ') do
+    n.times { array.fast_percentile(65) }
+  end
+end

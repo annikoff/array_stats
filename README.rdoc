@@ -1,5 +1,7 @@
 = array_stats
 
+{<img src="https://travis-ci.org/annikoff/array_stats.svg?branch=experiment" alt="Build Status" />}[https://travis-ci.org/annikoff/array_stats]
+
 * Docs[http://benkoski.com/array_stats/]
 * Source[http://github.com/bkoski/array_stats]
 
@@ -37,6 +39,16 @@ Percentile calculations are based on the NIST formula[http://www.itl.nist.gov/di
 == INSTALL:
 
 * <tt>sudo gem install bkoski-array_stats --source http://gemcutter.org</tt>
+
+== BENCHMARK
+
+A comparison of percentile and fast_percentile methods.
+
+```
+       user     system      total        real
+Ruby:  23.120000   0.080000  23.200000 ( 23.197993)
+Golang:  11.280000   0.040000  11.320000 ( 11.292624)
+```
 
 == LICENSE:
 
